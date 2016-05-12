@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.awt.Container;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+import javax.swing.JToggleButton;
+
+/**
+ *
+ * @author Laituli
+ */
+public class Kayttoliittyma implements Runnable {
+
+    private Kasittelija kasittelija;
+    public final int leveys;
+    public final int korkeus;
+
+    public Kayttoliittyma(Kasittelija kasittelija) {
+        this.kasittelija = kasittelija;
+        leveys = Toolkit.getDefaultToolkit().getScreenSize().width;
+        korkeus = Toolkit.getDefaultToolkit().getScreenSize().height;
+    }
+
+    public Kasittelija getKasittelija() {
+        return kasittelija;
+    }
+    
+    private JFrame frame;
+
+    @Override
+    public void run() {
+        frame = new JFrame("Laikaappa");
+        frame.setAlwaysOnTop(true);
+        frame.setBounds(10, 200, 200, 400);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        luoKomponentit(frame.getContentPane());
+        frame.setVisible(true);
+    }
+
+    private void luoKomponentit(Container container) {
+        container.setLayout(null);
+        tallennus = new JToggleButton();
+        tallennus.setText("save");
+        tallennus.setBounds(10, 300, 80, 30);
+        tallennus.setSelected(true);
+        lahetys = new JToggleButton();
+        lahetys.setText("upload");
+        lahetys.setBounds(90, 300, 80, 30);
+        lahetys.setSelected(true);
+        container.add(tallennus);
+        container.add(lahetys);
+        FullScreenButton fsb = new FullScreenButton(this, 10, 70, 100, 50);
+        container.add(fsb);
+        
+        
+    }
+
+    private JToggleButton lahetys;
+
+    public boolean lahetako() {
+        if (lahetys == null) {
+            return false;
+        }
+        return lahetys.isSelected();
+    }
+
+    private JToggleButton tallennus;
+
+    public boolean tallennako() {
+        if (tallennus == null) {
+            return false;
+        }
+        return tallennus.isSelected();
+    }
+}
