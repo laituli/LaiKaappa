@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
@@ -24,39 +27,48 @@ public class AlueenOtto extends Thread implements MouseListener {
         this.kayttoliittyma = kayttoliittyma;
     }
 
-    int mspf = 1000;
-
+    JFrame frame;
+    final Color tausta = new Color(0, 0, 0, 1);
+    final Color reuna = new Color(.5f, .5f, .5f, .5f);
+    final Color sisalto = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+    
     @Override
     public void run() {
         JButton button = new JButton();
+        button.setBorder(null);
         button.addMouseListener(this);
-        
-        JFrame frame = new JFrame();
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        frame = new JFrame() {
+            @Override
+            public void paint(Graphics grphcs) {
+                super.paint(grphcs);
+                grphcs.setColor(tausta);
+                grphcs.fillRect(0, 0, kayttoliittyma.leveys, kayttoliittyma.leveys);
+                if (painattu) {
+                    int x1 = MouseInfo.getPointerInfo().getLocation().x;
+                    int y1 = MouseInfo.getPointerInfo().getLocation().y;
+                    int x2 = x < x1 ? x1 : x;
+                    int y2 = y < y1 ? y1 : y;
+                    x1 = x < x1 ? x : x1;
+                    y1 = y < y1 ? y : y1;
+                    grphcs.setColor(sisalto);
+                    grphcs.fillRect(x1, y1, x2 - x1, y2 - y1);
+                    grphcs.setColor(reuna);
+                    grphcs.drawRect(x1, y1, x2 - x1, y2 - y1);
+                }
+                repaint();
+            }
+        };
         frame.setUndecorated(true);
-        frame.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
+        frame.setBackground(new Color(0,0,0,0));
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setResizable(false);
-        //frame.getContentPane().add(button);
+        frame.getContentPane().add(button);
         //frame.getRootPane().add(button);
-        frame.getRootPane().setDefaultButton(button);
+        //frame.getRootPane().setDefaultButton(button);
         frame.setVisible(true);
-        
-        while (jatkuu) {
-            if (!painattu) {
-                System.out.println("ei ole painattu vielä");
-            }
-            if (painattu) {
-                System.out.println("ei piirrä vielä");
-                //piirrä
-            }
-            try {
-                Thread.sleep(mspf);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(AlueenOtto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        System.out.println("kuvan kaappaus päättyy");
-        frame.dispose();
     }
     boolean jatkuu = true;
     boolean painattu = false;
@@ -68,7 +80,8 @@ public class AlueenOtto extends Thread implements MouseListener {
         if (painattu) {
             return;
         }
-        if (me.getButton() != 0) {
+        System.out.println(me.getButton());
+        if (me.getButton() != 1) {
             return;
         }
         painattu = true;
@@ -78,22 +91,24 @@ public class AlueenOtto extends Thread implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent me) {
+        System.out.println("release");
         if (!painattu) {
             return;
         }
-        if (me.getButton() != 0) {
+        if (me.getButton() != 1) {
             return;
         }
-        int x1, y1, x2, y2;
-        x2 = me.getXOnScreen();
-        y2 = me.getYOnScreen();
-        x1 = x < x2 ? x : x2;
-        y1 = y < y2 ? y : y2;
+        int x2 = me.getXOnScreen();
+        int y2 = me.getYOnScreen();
+        int x1 = x < x2 ? x : x2;
+        int y1 = y < y2 ? y : y2;
         x2 = x < x2 ? x2 : x;
-        y1 = y < y2 ? y2 : y;
+        y2 = y < y2 ? y2 : y;
         painattu = false;
         jatkuu = false;
+        frame.dispose();
         new OtaTallennaLaheta(kayttoliittyma, x1, y1, x2 - x1, y2 - y1).tee();
+        System.out.println("kuvan kaappaus päättyy");
     }
 
     @Override

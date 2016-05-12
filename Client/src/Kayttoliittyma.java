@@ -50,7 +50,7 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Laikaappa");
-        frame.setAlwaysOnTop(true);
+        //frame.setAlwaysOnTop(true);
         frame.setBounds(10, 200, 200, 400);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
