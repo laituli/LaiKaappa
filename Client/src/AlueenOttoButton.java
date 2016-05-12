@@ -2,6 +2,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,6 +26,6 @@ public class AlueenOttoButton extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+        SwingUtilities.invokeLater(new AlueenOtto(kayttoliittyma));
     }
 }

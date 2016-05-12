@@ -94,4 +94,7 @@ public class Kayttoliittyma implements Runnable {
         }
         return tallennus.isSelected();
     }
+    
+    
+    
 }
