@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import java.awt.Container;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -18,20 +17,34 @@ import javax.swing.JToggleButton;
  */
 public class Kayttoliittyma implements Runnable {
 
-    private Kasittelija kasittelija;
+    private Lahettaja lahettaja;
+    private Tallentaja tallentaja;
+    private KuvanOttaja kuvanOttaja ;
     public final int leveys;
     public final int korkeus;
 
-    public Kayttoliittyma(Kasittelija kasittelija) {
-        this.kasittelija = kasittelija;
+    public Kayttoliittyma(Lahettaja lahettaja, Tallentaja tallentaja, KuvanOttaja kuvanOttaja) {
+        this.lahettaja = lahettaja;
+        this.tallentaja = tallentaja;
+        this.kuvanOttaja = kuvanOttaja;
         leveys = Toolkit.getDefaultToolkit().getScreenSize().width;
         korkeus = Toolkit.getDefaultToolkit().getScreenSize().height;
     }
 
-    public Kasittelija getKasittelija() {
-        return kasittelija;
+    public Tallentaja getTallentaja() {
+        return tallentaja;
     }
+
+    public KuvanOttaja getKuvanOttaja() {
+        return kuvanOttaja;
+    }
+
+    public Lahettaja getLahettaja() {
+        return lahettaja;
+    }
+
     
+
     private JFrame frame;
 
     @Override
@@ -56,10 +69,12 @@ public class Kayttoliittyma implements Runnable {
         lahetys.setSelected(true);
         container.add(tallennus);
         container.add(lahetys);
-        FullScreenButton fsb = new FullScreenButton(this, 10, 70, 100, 50);
-        container.add(fsb);
-        
-        
+
+        KokoNaytonOttoButton knob = new KokoNaytonOttoButton(this, 10, 10, 160, 40);
+        container.add(knob);
+
+        AlueenOttoButton aob = new AlueenOttoButton(this, 10, 60, 160, 40);
+        container.add(aob);
     }
 
     private JToggleButton lahetys;

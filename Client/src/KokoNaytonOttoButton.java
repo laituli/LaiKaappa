@@ -14,11 +14,11 @@ import javax.swing.JButton;
  *
  * @author Laituli
  */
-public class FullScreenButton extends JButton implements ActionListener {
+public class KokoNaytonOttoButton extends JButton implements ActionListener {
 
     Kayttoliittyma kayttoliittyma;
 
-    public FullScreenButton(Kayttoliittyma kayttoliittyma, int x, int y, int leveys, int korkeus) {
+    public KokoNaytonOttoButton(Kayttoliittyma kayttoliittyma, int x, int y, int leveys, int korkeus) {
         super();
         this.kayttoliittyma = kayttoliittyma;
         setBounds(x, y, leveys, korkeus);
@@ -28,19 +28,16 @@ public class FullScreenButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        BufferedImage image = kayttoliittyma.getKasittelija().otaKuva(0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus);     
+        BufferedImage image = kayttoliittyma.getKuvanOttaja().otaKuva(0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus);     
         if(image != null){
-            Kasittelija kasittelija = kayttoliittyma.getKasittelija();
             if(kayttoliittyma.tallennako()){
                 System.out.println("tallenna");
-                kasittelija.tallennaKuva(image);
+                kayttoliittyma.getTallentaja().tallennaKuva(image);
             }
             if(kayttoliittyma.lahetako()){
                 System.out.println("lähetä");
-                kasittelija.lahetaKuva(image);
+                kayttoliittyma.getLahettaja().lahetaKuva(image);
             }
-        }else{
-            System.out.println("kuvan kaappaus epäonnistuu");
         }
     }
 
