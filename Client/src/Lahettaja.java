@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  */
 public class Lahettaja {
    public void lahetaKuva(BufferedImage image) {
-        throw new UnsupportedOperationException("ei voi lähetä viel mtn");
-    }
+       System.out.println("vielä ei voi lähettää mitään XD");
+   }
      
 }

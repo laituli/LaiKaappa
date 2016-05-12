@@ -1,6 +1,8 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
@@ -9,19 +11,21 @@ import javax.swing.SwingUtilities;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Laituli
  */
-public class AlueenOttoButton extends JButton implements ActionListener{
+public class AlueenOttoButton extends JButton implements ActionListener {
+
     Kayttoliittyma kayttoliittyma;
+
     public AlueenOttoButton(Kayttoliittyma kayttoliittyma, int x, int y, int leveys, int korkeus) {
         super();
         this.kayttoliittyma = kayttoliittyma;
         setBounds(x, y, leveys, korkeus);
         setText("areashot");
         addActionListener(this);
+
     }
 
     @Override

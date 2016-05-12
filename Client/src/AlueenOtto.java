@@ -1,8 +1,10 @@
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /*
@@ -16,22 +18,33 @@ import javax.swing.JFrame;
  */
 public class AlueenOtto extends Thread implements MouseListener {
 
-    JFrame frame;
     Kayttoliittyma kayttoliittyma;
 
     public AlueenOtto(Kayttoliittyma kayttoliittyma) {
         this.kayttoliittyma = kayttoliittyma;
-        frame = new JFrame();
-        frame.setEnabled(false);
-        frame.addMouseListener(this);
     }
 
     int mspf = 1000;
 
     @Override
     public void run() {
-        frame.setEnabled(true);
+        JButton button = new JButton();
+        button.addMouseListener(this);
+        
+        JFrame frame = new JFrame();
+        frame.setUndecorated(true);
+        frame.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setResizable(false);
+        //frame.getContentPane().add(button);
+        //frame.getRootPane().add(button);
+        frame.getRootPane().setDefaultButton(button);
+        frame.setVisible(true);
+        
         while (jatkuu) {
+            if (!painattu) {
+                System.out.println("ei ole painattu vielä");
+            }
             if (painattu) {
                 System.out.println("ei piirrä vielä");
                 //piirrä
@@ -42,6 +55,7 @@ public class AlueenOtto extends Thread implements MouseListener {
                 Logger.getLogger(AlueenOtto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println("kuvan kaappaus päättyy");
         frame.dispose();
     }
     boolean jatkuu = true;
@@ -50,6 +64,7 @@ public class AlueenOtto extends Thread implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent me) {
+        System.out.println("press");
         if (painattu) {
             return;
         }

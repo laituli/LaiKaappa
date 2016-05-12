@@ -32,11 +32,11 @@ public class OtaTallennaLaheta {
         BufferedImage image = kayttoliittyma.getKuvanOttaja().otaKuva(x, y, leveys, korkeus);
         if (image != null) {
             if (kayttoliittyma.tallennako()) {
-                System.out.println("tallenna");
+                System.out.println("tallennetaan...");
                 kayttoliittyma.getTallentaja().tallennaKuva(image);
             }
             if (kayttoliittyma.lahetako()) {
-                System.out.println("lähetä");
+                System.out.println("lähetetään...");
                 kayttoliittyma.getLahettaja().lahetaKuva(image);
             }
         }

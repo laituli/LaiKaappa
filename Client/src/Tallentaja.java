@@ -19,10 +19,13 @@ import javax.imageio.ImageIO;
 public class Tallentaja {
     
     public void tallennaKuva(BufferedImage image, String name) {
+        System.out.println("koetetaan tallentaa");
         try {
             File file = new File(polku + "/" + name + ".png");
             ImageIO.write(image, "png", file);
+            System.out.println("tallentaminen onnistuu");
         } catch (IOException ex) {
+            System.out.println("tallentaminen epäonnistuu");
             Logger.getLogger(Tallentaja.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
