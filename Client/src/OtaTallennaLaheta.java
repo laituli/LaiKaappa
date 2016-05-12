@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Laituli
  */
-public class KuvanAction {
+public class OtaTallennaLaheta {
 
     Kayttoliittyma kayttoliittyma;
     int x;
@@ -19,7 +19,7 @@ public class KuvanAction {
     int korkeus;
 
     
-    public KuvanAction(Kayttoliittyma kayttoliittyma, int x1, int y1, int leveys, int korkeus) {
+    public OtaTallennaLaheta(Kayttoliittyma kayttoliittyma, int x1, int y1, int leveys, int korkeus) {
         this.kayttoliittyma = kayttoliittyma;
         this.x = x1;
         this.y = y1;
@@ -41,4 +41,6 @@ public class KuvanAction {
             }
         }
     }
+    
+    
 }

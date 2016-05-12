@@ -27,7 +27,7 @@ public class KokoNaytonOttoButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        new KuvanAction(kayttoliittyma, 0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus).tee();
+        new OtaTallennaLaheta(kayttoliittyma, 0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus).tee();
     }
 
 }

@@ -78,7 +78,7 @@ public class AlueenOtto extends Thread implements MouseListener {
         y1 = y < y2 ? y2 : y;
         painattu = false;
         jatkuu = false;
-        new KuvanAction(kayttoliittyma, x1, y1, x2 - x1, y2 - y1).tee();
+        new OtaTallennaLaheta(kayttoliittyma, x1, y1, x2 - x1, y2 - y1).tee();
     }
 
     @Override
