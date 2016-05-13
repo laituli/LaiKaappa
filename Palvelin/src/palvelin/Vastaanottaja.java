@@ -20,11 +20,14 @@ import javax.imageio.ImageIO;
 public class Vastaanottaja {
     
     public BufferedImage vastaanottaa(Socket socket) {
+        System.out.println("koetetaan vastaanottaa kuva");
         try {
             InputStream stream = socket.getInputStream();
             BufferedImage image = ImageIO.read(stream);
+            System.out.println("vastaanotto onnistui");
             return image;
         } catch (IOException ex) {
+            System.out.println("vastaanotto epäonnistui");
             Logger.getLogger(Vastaanottaja.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

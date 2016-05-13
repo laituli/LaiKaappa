@@ -38,6 +38,7 @@ public class Palvelin {
         System.out.println("palvelin kaynnistyy");
         while (true) {
             Socket socket = palvelinsocket.accept();
+            System.out.println("get socket");
             BufferedImage image = vastaanottaja.vastaanottaa(socket);
             if (image != null) {
                 tallentaja.tallennaKuva(image);

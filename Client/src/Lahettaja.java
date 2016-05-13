@@ -21,13 +21,24 @@ public class Lahettaja {
     private int port = 8888;
 
     public void lahetaKuva(BufferedImage image) {
+        Socket socket = null;
+        System.out.println("luo socket");
         try {
-            Socket socket = new Socket(osoite, port);
+            socket = new Socket(osoite, port);
+            System.out.println("luotu socket");
             ImageIO.write(image, "png", socket.getOutputStream());
             System.out.println("kuva lähetetty");
         } catch (IOException ex) {
             System.out.println("lahettaminen epäonnistuu");
             Logger.getLogger(Lahettaja.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Lahettaja.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
