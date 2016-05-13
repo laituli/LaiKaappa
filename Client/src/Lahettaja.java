@@ -17,12 +17,12 @@ import javax.imageio.ImageIO;
  */
 public class Lahettaja {
 
-    private String osoite;
-    private int port;
+    private String osoite = "88.195.156.217";
+    private int port = 8888;
 
     public void lahetaKuva(BufferedImage image) {
         try {
-            Socket socket = new Socket(osoite,port);
+            Socket socket = new Socket(osoite, port);
             ImageIO.write(image, "png", socket.getOutputStream());
             System.out.println("kuva lähetetty");
         } catch (IOException ex) {

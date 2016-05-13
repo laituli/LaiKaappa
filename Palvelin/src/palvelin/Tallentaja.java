@@ -17,11 +17,18 @@ import javax.imageio.ImageIO;
  * @author Laituli
  */
 public class Tallentaja {
-    private String polku = "savedImage";
+
+    private File kansio;
+
+    public Tallentaja() {
+        kansio = new File(System.getProperty("user.home") + File.separator + "laikaappa_savedImage");
+        kansio.mkdir();
+    }
+
     public void tallennaKuva(BufferedImage image, String name) {
         System.out.println("koetetaan tallentaa");
         try {
-            File file = new File(polku + "/" + name + ".png");
+            File file = new File(kansio, name + ".png");
             ImageIO.write(image, "png", file);
             System.out.println("tallentaminen onnistuu");
         } catch (IOException ex) {
@@ -33,8 +40,8 @@ public class Tallentaja {
     public void tallennaKuva(BufferedImage image) {
         tallennaKuva(image, generoiNimi());
     }
-    
-    private String generoiNimi(){
+
+    private String generoiNimi() {
         return Long.toHexString(System.nanoTime());
     }
 }

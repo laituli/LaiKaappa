@@ -11,17 +11,19 @@ import javax.imageio.ImageIO;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Laituli
  */
 public class Tallentaja {
-    
+    public Tallentaja() {
+        kansio = new File(System.getProperty("user.home") + File.separator + "laikaappa_savedImage");
+        kansio.mkdir();
+    }
     public void tallennaKuva(BufferedImage image, String name) {
         System.out.println("koetetaan tallentaa");
         try {
-            File file = new File(polku + "/" + name + ".png");
+            File file = new File(kansio, name+".png");
             ImageIO.write(image, "png", file);
             System.out.println("tallentaminen onnistuu");
         } catch (IOException ex) {
@@ -29,29 +31,12 @@ public class Tallentaja {
             Logger.getLogger(Tallentaja.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     public void tallennaKuva(BufferedImage image) {
         tallennaKuva(image, generoiNimi());
     }
-    private String polku = "savedImage";
-
-    public boolean setPolku(String path) {
-        if (tsekkaaPolunNimi(path)) {
-            this.polku = path;
-            return true;
-        }
-        return false;
-    }
-
-    public String getPolku() {
-        return polku;
-    }
+    private File kansio;
 
     public String generoiNimi() {
         return Long.toHexString(System.nanoTime());
-    }
-
-    public boolean tsekkaaPolunNimi(String pathName) {
-        return true;
     }
 }

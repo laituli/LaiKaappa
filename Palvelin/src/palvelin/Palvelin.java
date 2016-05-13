@@ -29,13 +29,7 @@ public class Palvelin {
     }
 
     public Palvelin(Vastaanottaja vastaanottaja, Tallentaja tallentaja) {
-        //korjaa
-        //korjaa
-        //korjaa
-        port = 2345;
-        //korjaa
-        //korjaa
-        //korjaa
+        port = 8888;
         this.vastaanottaja = vastaanottaja;
         this.tallentaja = tallentaja;
     }
