@@ -28,7 +28,7 @@ public class AlueenOtto extends Thread implements MouseListener {
     }
 
     JFrame frame;
-    final Color tausta = new Color(0, 0, 0, 1);
+    final Color tausta = new Color(0, 0, 0, 0);
     final Color reuna = new Color(.5f, .5f, .5f, .5f);
     final Color sisalto = new Color(1.0f, 1.0f, 1.0f, 0.5f);
     
