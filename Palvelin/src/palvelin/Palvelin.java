@@ -49,6 +49,7 @@ public class Palvelin {
             if(image!=null){
                 tallentaja.tallennaKuva(image);
             }
+            socket.close();
         }
     }
 }
