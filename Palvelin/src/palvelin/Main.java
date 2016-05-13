@@ -5,13 +5,15 @@
  */
 package palvelin;
 
+import java.io.IOException;
+
 /**
  *
  * @author Laituli
  */
 public class Main {
-
-    public static void main(String[] args) {
-        Vastaanottaja vastaanottaja = new Vastaanottaja();
+    public static void main(String[] args) throws IOException {
+        System.out.println("start");
+        new Palvelin(new Vastaanottaja(), new Tallentaja()).kaynnista();
     }
 }

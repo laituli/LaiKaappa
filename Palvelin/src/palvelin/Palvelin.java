@@ -16,7 +16,7 @@ import java.net.Socket;
  */
 public class Palvelin {
 
-    public final int port;
+    public final int port = 8888;
     private Vastaanottaja vastaanottaja;
     private Tallentaja tallentaja;
 
@@ -29,7 +29,6 @@ public class Palvelin {
     }
 
     public Palvelin(Vastaanottaja vastaanottaja, Tallentaja tallentaja) {
-        port = 8888;
         this.vastaanottaja = vastaanottaja;
         this.tallentaja = tallentaja;
     }
@@ -40,7 +39,7 @@ public class Palvelin {
         while (true) {
             Socket socket = palvelinsocket.accept();
             BufferedImage image = vastaanottaja.vastaanottaa(socket);
-            if(image!=null){
+            if (image != null) {
                 tallentaja.tallennaKuva(image);
             }
             socket.close();
