@@ -24,13 +24,19 @@ public class Palvelin {
         return tallentaja;
     }
 
-    public Palvelin(Vastaanottaja vastaanottaja, Tallentaja tallentaja) {
+    public LinkinLahetin getLinkinLahetin() {
+        return linkinLahetin;
+    }
+
+    public Palvelin(Vastaanottaja vastaanottaja, Tallentaja tallentaja, LinkinLahetin linkinLahetin) {
         this.vastaanottaja = vastaanottaja;
         this.tallentaja = tallentaja;
+        this.linkinLahetin = linkinLahetin;
     }
 
     private Vastaanottaja vastaanottaja;
     private Tallentaja tallentaja;
+    private LinkinLahetin linkinLahetin;
     public final int port = 30101;
 
     public void kaynnista() throws IOException {
@@ -42,7 +48,12 @@ public class Palvelin {
             System.out.println("get socket");
             BufferedImage image = vastaanottaja.vastaanottaa(socket);
             if (image != null) {
-                tallentaja.tallennaKuva(image);
+                String kuvanNimi = tallentaja.tallennaKuva(image);
+                if (kuvanNimi != null) {
+                    linkinLahetin.lahetaLink(kuvanNimi, socket);
+                } else {
+                    linkinLahetin.lahetaError(socket);
+                }
             }
             socket.close();
             System.out.println("close socket");

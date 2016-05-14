@@ -37,7 +37,7 @@ public class OtaTallennaLaheta {
             }
             if (kayttoliittyma.lahetako()) {
                 System.out.println("lähetetään...");
-                kayttoliittyma.getLahettaja().lahetaKuva(image);
+                kayttoliittyma.getKommunikaattori().kommunikoiKuva(image);
             }
         }
     }

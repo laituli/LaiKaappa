@@ -11,3 +11,7 @@ index.html  	-ei ole pakko
 
 tallennus:
 osoitteen kopiointi
+
+build and clean ohjelmaa
+siirt‰‰ se palvelimelle
+ajaa

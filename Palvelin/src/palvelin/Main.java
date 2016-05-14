@@ -14,6 +14,6 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("start");
-        new Palvelin(new Vastaanottaja(), new Tallentaja()).kaynnista();
+        new Palvelin(new Vastaanottaja(), new Tallentaja(),new LinkinLahetin()).kaynnista();
     }
 }

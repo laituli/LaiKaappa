@@ -39,8 +39,8 @@ public class Tallentaja {
         return null;
     }
 
-    public void tallennaKuva(BufferedImage image) {
-        tallennaKuva(image, generoiNimi());
+    public String tallennaKuva(BufferedImage image) {
+        return tallennaKuva(image, generoiNimi());
     }
 
     private String generoiNimi() {

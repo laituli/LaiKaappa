@@ -17,16 +17,18 @@ import javax.swing.JToggleButton;
  */
 public class Kayttoliittyma implements Runnable {
 
-    private Lahettaja lahettaja;
+    private Kommunikaattori kommunikaattori;
     private Tallentaja tallentaja;
-    private KuvanOttaja kuvanOttaja ;
+    private KuvanOttaja kuvanOttaja;
+    private Kopioija kopioija;
     public final int leveys;
     public final int korkeus;
 
-    public Kayttoliittyma(Lahettaja lahettaja, Tallentaja tallentaja, KuvanOttaja kuvanOttaja) {
-        this.lahettaja = lahettaja;
-        this.tallentaja = tallentaja;
-        this.kuvanOttaja = kuvanOttaja;
+    public Kayttoliittyma() {
+        kopioija = new Kopioija();
+        this.kommunikaattori = new Kommunikaattori(kopioija);
+        this.tallentaja = new Tallentaja();
+        this.kuvanOttaja = new KuvanOttaja();
         leveys = Toolkit.getDefaultToolkit().getScreenSize().width;
         korkeus = Toolkit.getDefaultToolkit().getScreenSize().height;
     }
@@ -39,11 +41,9 @@ public class Kayttoliittyma implements Runnable {
         return kuvanOttaja;
     }
 
-    public Lahettaja getLahettaja() {
-        return lahettaja;
+    public Kommunikaattori getKommunikaattori() {
+        return kommunikaattori;
     }
-
-    
 
     private JFrame frame;
 
@@ -94,7 +94,5 @@ public class Kayttoliittyma implements Runnable {
         }
         return tallennus.isSelected();
     }
-    
-    
-    
+
 }
