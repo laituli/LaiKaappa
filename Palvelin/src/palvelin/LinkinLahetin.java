@@ -20,12 +20,22 @@ public class LinkinLahetin {
     private final String aloitus = "http://88.195.156.217/laikuvat/";
 
     public void lahetaLink(String name, Socket socket) {
+        PrintWriter pw = null;
         try {
             String link = getLink(name);
             System.out.println("koetetaan lähettää linkki");
-            PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write(link);
+            pw = new PrintWriter(socket.getOutputStream());
+            pw.write(link);;
+            pw.flush();
+            System.out.println("flush");
             System.out.println("linkin lähetys onnistuu");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(LinkinLahetin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pw.close();
+            System.out.println("close");
         } catch (IOException ex) {
             System.out.println("linkin lähetys epäonnistuu");
             Logger.getLogger(LinkinLahetin.class.getName()).log(Level.SEVERE, null, ex);
