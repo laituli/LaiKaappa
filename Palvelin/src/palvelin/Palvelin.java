@@ -16,10 +16,6 @@ import java.net.Socket;
  */
 public class Palvelin {
 
-    public final int port = 8888;
-    private Vastaanottaja vastaanottaja;
-    private Tallentaja tallentaja;
-
     public Vastaanottaja getVastaanottaja() {
         return vastaanottaja;
     }
@@ -33,10 +29,15 @@ public class Palvelin {
         this.tallentaja = tallentaja;
     }
 
+    private Vastaanottaja vastaanottaja;
+    private Tallentaja tallentaja;
+    public final int port = 30101;
+
     public void kaynnista() throws IOException {
         ServerSocket palvelinsocket = new ServerSocket(port, 10);
         System.out.println("palvelin kaynnistyy");
         while (true) {
+            System.out.println("odota socket");
             Socket socket = palvelinsocket.accept();
             System.out.println("get socket");
             BufferedImage image = vastaanottaja.vastaanottaa(socket);
@@ -44,6 +45,7 @@ public class Palvelin {
                 tallentaja.tallennaKuva(image);
             }
             socket.close();
+            System.out.println("close socket");
         }
     }
 }

@@ -1,0 +1,13 @@
+port:
+muuta "final int port" luokassa "Palvelin"
+avaa vastaava portti palvelimelle/reittittimelle
+
+kansio:
+muuta "kansio =" luokan konstruktorissa "Tallentaja()"
+luo kansiolle:
+oikeus		-siihen p‰‰see vieraat lukemaan
+symlink 	-miten selaimessa kirjoitetaan ett‰ voi lukea
+index.html  	-ei ole pakko
+
+tallennus:
+osoitteen kopiointi

@@ -1,0 +1,27 @@
+Perustoiminnallisuus/-rakenne/:
+
+	lähetetyn kuvan linkki kopiointi
+
+	Client Hotkey
+
+	Palvelin Socket Thread
+
+	Client Thread ?
+
+	Client Alueenotto hiiren tarkistuksen parannus
+
+	Client Alueenotto poistuminen
+
+
+Lisäys:	
+
+	Client Kuvanotto selected window/ current window
+
+	Client käyttöliittymä parannus
+
+	Client "Hidden" icon	
+
+	Video/Teksti/Muun tiedoston tyypit
+
+
+Bug:		

@@ -25,16 +25,18 @@ public class Tallentaja {
         kansio.mkdir();
     }
 
-    public void tallennaKuva(BufferedImage image, String name) {
+    public String tallennaKuva(BufferedImage image, String name) {
         System.out.println("koetetaan tallentaa");
         try {
             File file = new File(kansio, name + ".png");
             ImageIO.write(image, "png", file);
             System.out.println("tallentaminen onnistuu");
+            return name + ".png";
         } catch (IOException ex) {
             System.out.println("tallentaminen epäonnistuu");
             Logger.getLogger(Tallentaja.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     public void tallennaKuva(BufferedImage image) {
