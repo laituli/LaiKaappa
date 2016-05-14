@@ -1,9 +1,12 @@
+package kayttoliittyma;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import kayttoliittyma.Kayttoliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -27,7 +30,7 @@ public class KokoNaytonOttoButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        new OtaTallennaLaheta(kayttoliittyma, 0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus).tee();
+        new OtaTallennaLahetaKopioi(kayttoliittyma, 0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus).tee();
     }
 
 }

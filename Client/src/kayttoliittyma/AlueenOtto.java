@@ -1,4 +1,7 @@
+package kayttoliittyma;
 
+
+import kayttoliittyma.Kayttoliittyma;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
@@ -108,7 +111,7 @@ public class AlueenOtto extends Thread implements MouseListener {
         painattu = false;
         jatkuu = false;
         frame.dispose();
-        new OtaTallennaLaheta(kayttoliittyma, x1, y1, x2 - x1, y2 - y1).tee();
+        new OtaTallennaLahetaKopioi(kayttoliittyma, x1, y1, x2 - x1, y2 - y1).tee();
         System.out.println("kuvan kaappaus päättyy");
     }
 

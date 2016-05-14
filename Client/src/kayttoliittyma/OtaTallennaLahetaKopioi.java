@@ -1,4 +1,7 @@
+package kayttoliittyma;
 
+
+import kayttoliittyma.Kayttoliittyma;
 import java.awt.image.BufferedImage;
 
 /*
@@ -10,7 +13,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Laituli
  */
-public class OtaTallennaLaheta {
+public class OtaTallennaLahetaKopioi {
 
     Kayttoliittyma kayttoliittyma;
     int x;
@@ -19,7 +22,7 @@ public class OtaTallennaLaheta {
     int korkeus;
 
     
-    public OtaTallennaLaheta(Kayttoliittyma kayttoliittyma, int x1, int y1, int leveys, int korkeus) {
+    public OtaTallennaLahetaKopioi(Kayttoliittyma kayttoliittyma, int x1, int y1, int leveys, int korkeus) {
         this.kayttoliittyma = kayttoliittyma;
         this.x = x1;
         this.y = y1;
