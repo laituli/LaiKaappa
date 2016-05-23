@@ -1,5 +1,4 @@
-package kayttoliittyma;
-
+package muu_toiminnot;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -16,22 +15,27 @@ import java.awt.datatransfer.Transferable;
  *
  * @author Laituli
  */
-public class Kopioija implements ClipboardOwner{
+public class Kopioija {
 
-    Clipboard clipboard;
+    private Kopioija() {
+    }
 
-    public Kopioija() {
+    private static Clipboard clipboard;
+    private static ClipboardOwner owner;
+
+    public static void register() {
+        owner = new ClipboardOwner() {
+            @Override
+            public void lostOwnership(Clipboard clpbrd, Transferable t) {
+            }
+        };
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     }
 
-    public void kopioi(String viesti) {
+    public static void kopioi(String viesti) {
         System.out.println("kopioidaan");
         StringSelection selection = new StringSelection(viesti);
-        clipboard.setContents(selection, this);
+        clipboard.setContents(selection, owner);
         System.out.println("kopioitu");
-    }
-
-    @Override
-    public void lostOwnership(Clipboard clpbrd, Transferable t) {
     }
 }

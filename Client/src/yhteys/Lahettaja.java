@@ -3,7 +3,6 @@ package yhteys;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.Socket;
 import javax.imageio.ImageIO;
 
@@ -16,9 +15,9 @@ import javax.imageio.ImageIO;
  *
  * @author Laituli
  */
-public class Lahettaja {
+class Lahettaja {
 
-    public void lahetaKuva(BufferedImage image, Socket socket) throws IOException {
+    static void lahetaKuva(BufferedImage image, Socket socket) throws IOException {
         ImageIO.write(image, "png", socket.getOutputStream());
         System.out.println("kuva lähetetty");
     }

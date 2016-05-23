@@ -1,4 +1,4 @@
-package kayttoliittyma;
+package kayttoliittyma.toolbar.buttons;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,10 +6,9 @@ package kayttoliittyma;
  * and open the template in the editor.
  */
 
-import kayttoliittyma.Kayttoliittyma;
+import muu_toiminnot.OtaTallennaLahetaKopioi;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 
 /**
@@ -18,11 +17,8 @@ import javax.swing.JButton;
  */
 public class KokoNaytonOttoButton extends JButton implements ActionListener {
 
-    Kayttoliittyma kayttoliittyma;
-
-    public KokoNaytonOttoButton(Kayttoliittyma kayttoliittyma, int x, int y, int leveys, int korkeus) {
+    public KokoNaytonOttoButton(int x, int y, int leveys, int korkeus) {
         super();
-        this.kayttoliittyma = kayttoliittyma;
         setBounds(x, y, leveys, korkeus);
         setText("screenshot");
         addActionListener(this);
@@ -30,7 +26,7 @@ public class KokoNaytonOttoButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        new OtaTallennaLahetaKopioi(kayttoliittyma, 0, 0, kayttoliittyma.leveys, kayttoliittyma.korkeus).tee();
+        OtaTallennaLahetaKopioi.kokonaytto();
     }
 
 }

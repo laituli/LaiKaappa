@@ -1,12 +1,10 @@
-package kayttoliittyma;
+package kayttoliittyma.toolbar.buttons;
 
 
+import muu_toiminnot.kuvanotot.alueenotto.AlueenOtto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
-import javax.swing.SwingUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,19 +17,15 @@ import javax.swing.SwingUtilities;
  */
 public class AlueenOttoButton extends JButton implements ActionListener {
 
-    Kayttoliittyma kayttoliittyma;
-
-    public AlueenOttoButton(Kayttoliittyma kayttoliittyma, int x, int y, int leveys, int korkeus) {
+    public AlueenOttoButton(int x, int y, int leveys, int korkeus) {
         super();
-        this.kayttoliittyma = kayttoliittyma;
         setBounds(x, y, leveys, korkeus);
         setText("areashot");
         addActionListener(this);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        SwingUtilities.invokeLater(new AlueenOtto(kayttoliittyma));
+        AlueenOtto.otakuva();
     }
 }

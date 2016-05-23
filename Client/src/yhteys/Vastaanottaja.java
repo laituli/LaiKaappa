@@ -18,9 +18,9 @@ import java.util.logging.Logger;
  *
  * @author Laituli
  */
-public class Vastaanottaja {
+class Vastaanottaja {
 
-    public String vastaanottaa(Socket socket){    
+    static String vastaanottaa(Socket socket){    
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("koetetaan vastaanottaa viesti");

@@ -1,34 +1,29 @@
-Perustoiminnallisuus/-rakenne/:
+featuret:
 
-	lähetetyn kuvan linkki kopiointi
+	Client Hotkey eri tilanteessa (normi, ei käytössä, kuvan kaappauksessa, hotkey settingsissa) 
+		
+	Settings
 
-	Socket close uloin
+	Settings tallennus (käyttäjän kohtaiset, koneen kohtaiset)
 
-	Palvelin Socket Thread
+	Käyttäjän järjestelmä	
 
-	Client Thread ?
-
-	Client Hotkey
-
-	Client Alueenotto hiiren tarkistuksen parannus
-
-	Client Alueenotto poistuminen
-
-	luokat eri kansioon
-
-
-
-Lisäys:	
+	Historia
 
 	Client Kuvanotto selected window/ current window
-
-	tunnus-salasanajärjestelmä
-
-	Client käyttöliittymä parannus
 
 	Client "Hidden" icon	
 
 	Video/Teksti/Muun tiedoston tyypit
 
+Rakenteelliset:
 
-Bug:		
+	Staattisuus
+
+	Luokat ja paketit
+
+	Socket close uloin
+
+	Thread
+
+	Kommunikaattorin logiikka		

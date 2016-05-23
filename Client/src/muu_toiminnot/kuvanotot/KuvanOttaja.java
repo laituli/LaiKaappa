@@ -1,4 +1,4 @@
-package kayttoliittyma;
+package muu_toiminnot.kuvanotot;
 
 
 import java.awt.AWTException;
@@ -19,9 +19,14 @@ import java.util.logging.Logger;
  * @author Laituli
  */
 public class KuvanOttaja {
-    public BufferedImage otaKuva(int x, int y, int leveys, int korkeus) {
+    private KuvanOttaja(){
+    }
+    
+    public static BufferedImage otaKuva(int x, int y, int leveys, int korkeus) {
         try {
+            System.out.println("ota screenshot");
             BufferedImage image = new Robot().createScreenCapture(new Rectangle(x, y, leveys, korkeus));
+            System.out.println("otettu screenshot");
             return image;
         } catch (AWTException ex) {
             Logger.getLogger(KuvanOttaja.class.getName()).log(Level.SEVERE, null, ex);
