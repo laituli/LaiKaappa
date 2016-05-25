@@ -1,8 +1,8 @@
-package muu_toiminnot;
+package toiminnot;
 
 import Main.OhjelmanInfo;
 import java.awt.image.BufferedImage;
-import muu_toiminnot.kuvanotot.KuvanOttaja;
+import toiminnot.kuvanotot.KuvanOttaja;
 import yhteys.Kommunikaattori;
 
 /*
@@ -25,10 +25,10 @@ public class OtaTallennaLahetaKopioi {
     public static void custom(int x, int y, int leveys, int korkeus) {
         BufferedImage image = KuvanOttaja.otaKuva(x, y, leveys, korkeus);
         if (image != null) {
-            if (OhjelmanInfo.isTallennako()) {
+            if (OhjelmanInfo.getTallennako().bool()) {
                 Tallentaja.tallennaKuva(image);
             }
-            if (OhjelmanInfo.isLahetako()) {
+            if (OhjelmanInfo.getLahetako().bool()) {
                 Kommunikaattori.kommunikoiKuva(image);
             }
         }

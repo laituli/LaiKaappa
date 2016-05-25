@@ -1,6 +1,6 @@
 package yhteys;
 
-import muu_toiminnot.Kopioija;
+import toiminnot.Kopioija;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.Socket;

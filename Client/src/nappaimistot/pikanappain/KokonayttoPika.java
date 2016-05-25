@@ -6,7 +6,7 @@
 package nappaimistot.pikanappain;
 
 import Main.OhjelmanInfo;
-import muu_toiminnot.OtaTallennaLahetaKopioi;
+import toiminnot.OtaTallennaLahetaKopioi;
 import org.jnativehook.keyboard.NativeKeyEvent;
 
 /**

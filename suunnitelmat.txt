@@ -1,14 +1,12 @@
 featuret:
-
-	Client Hotkey eri tilanteessa (normi, ei käytössä, kuvan kaappauksessa, hotkey settingsissa) 
-		
+	
 	Settings
+	
+	Asetustiedosto
 
-	Settings tallennus (käyttäjän kohtaiset, koneen kohtaiset)
-
+	Client Hotkey eri tilanteessa (normi, ei käytössä, kuvan kaappauksessa, hotkey settingsissa, ei kirjautuneena, syöttämisessä) 
+	
 	Käyttäjän järjestelmä	
-
-	Historia
 
 	Client Kuvanotto selected window/ current window
 
@@ -21,6 +19,8 @@ Rakenteelliset:
 	Staattisuus
 
 	Luokat ja paketit
+
+	Socket lähetys yksitellen
 
 	Socket close uloin
 

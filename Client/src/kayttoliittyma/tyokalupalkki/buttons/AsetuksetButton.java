@@ -1,32 +1,34 @@
-package kayttoliittyma.toolbar.buttons;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import muu_toiminnot.OtaTallennaLahetaKopioi;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+package kayttoliittyma.tyokalupalkki.buttons;
 
 /**
  *
- * @author Laituli
+ * @author lai
  */
-public class KokoNaytonOttoButton extends JButton implements ActionListener {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import kayttoliittyma.asetukset.AsetuksetGUI;
 
-    public KokoNaytonOttoButton(int x, int y, int leveys, int korkeus) {
+/**
+ *
+ * @author lai
+ */
+public class AsetuksetButton extends JButton implements ActionListener {
+
+    public AsetuksetButton(int x, int y, int leveys, int korkeus) {
         super();
         setBounds(x, y, leveys, korkeus);
-        setText("screenshot");
+        setText("Settings");
         addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        OtaTallennaLahetaKopioi.kokonaytto();
+        AsetuksetGUI.paalle(true);
     }
-
 }

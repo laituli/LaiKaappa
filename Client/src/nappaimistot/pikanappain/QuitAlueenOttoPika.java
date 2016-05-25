@@ -5,7 +5,7 @@
  */
 package nappaimistot.pikanappain;
 
-import muu_toiminnot.kuvanotot.alueenotto.AlueenOtto;
+import toiminnot.kuvanotot.alueenotto.AlueenOtto;
 import org.jnativehook.keyboard.NativeKeyEvent;
 
 /**

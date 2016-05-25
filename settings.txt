@@ -1,0 +1,26 @@
+
+general
+
+	start on startup
+	hide GUI on capture
+	hide mouse on capture
+	vertical/horizontal toolbar
+on success capture
+	autosave	path
+	autoupload	
+	notice sound
+	autocopy link
+	autoopen link
+
+history
+.....
+
+
+account
+.....
+
+
+hotkey
+.....
+
+

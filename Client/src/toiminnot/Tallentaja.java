@@ -1,4 +1,4 @@
-package muu_toiminnot;
+package toiminnot;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

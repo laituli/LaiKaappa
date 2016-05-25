@@ -1,4 +1,4 @@
-package muu_toiminnot;
+package toiminnot;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;

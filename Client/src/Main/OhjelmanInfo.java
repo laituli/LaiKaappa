@@ -15,32 +15,14 @@ import org.jnativehook.NativeHookException;
  *
  * @author Laituli
  */
-public class OhjelmanInfo{
+public class OhjelmanInfo {
 
     public static int leveys;
     public static int korkeus;
-    private static boolean tallennako = true;
-    private static boolean lahetako = true;
 
     public static void register() {
         leveys = Toolkit.getDefaultToolkit().getScreenSize().width;
         korkeus = Toolkit.getDefaultToolkit().getScreenSize().height;
-    }
-
-    public static boolean isTallennako() {
-        return tallennako;
-    }
-
-    public static void setTallennako(boolean tallennako) {
-        OhjelmanInfo.tallennako = tallennako;
-    }
-
-    public static boolean isLahetako() {
-        return lahetako;
-    }
-
-    public static void setLahetako(boolean lahetako) {
-        OhjelmanInfo.lahetako = lahetako;
     }
 
     public static void quit() {
@@ -53,4 +35,27 @@ public class OhjelmanInfo{
         }
         System.exit(0);
     }
+
+    public static Option piilottaako = Option.FALSE;
+    public static Option tallennako = Option.TRUE;
+    public static Option lahetako = Option.TRUE;
+    public static Option kopioiko = Option.TRUE;
+
+    public static Option getPiilottaako() {
+        return piilottaako;
+    }
+
+    public static Option getTallennako() {
+        return tallennako;
+    }
+
+    public static int getKorkeus() {
+        return korkeus;
+    }
+
+    public static Option getLahetako() {
+        return lahetako;
+    }
+
+    
 }

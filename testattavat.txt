@@ -1,0 +1,32 @@
+
+aja
+
+-> button screenshot -> save
+
+-> button alueenotto -> send -> paste
+
+-> hotkey screenshot -> send
+
+-> hotkey alueenotto -> paina -> esc
+
+-> button alueenotto -> esc
+
+-> hotkey alueenotto -> hotkeyalueenotto -> esc
+
+-> button quit
+
+aja
+
+-> sulje -> hotkey gui -> sulje
+
+{
+-> hotkey disable
+
+-> hotkey gui
+
+-> hotkey alueenotto
+
+-> hotkey screenshot
+ 
+-> hotkey quit 
+} *2

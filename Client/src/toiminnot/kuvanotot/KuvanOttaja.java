@@ -1,4 +1,4 @@
-package muu_toiminnot.kuvanotot;
+package toiminnot.kuvanotot;
 
 
 import java.awt.AWTException;

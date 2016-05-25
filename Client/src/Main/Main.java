@@ -1,10 +1,11 @@
 package Main;
 
-import kayttoliittyma.toolbar.LaikaappaGUI;
-import muu_toiminnot.Kopioija;
-import muu_toiminnot.OtaTallennaLahetaKopioi;
-import muu_toiminnot.Tallentaja;
-import muu_toiminnot.kuvanotot.alueenotto.AlueenOtto;
+import kayttoliittyma.asetukset.AsetuksetGUI;
+import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
+import toiminnot.Kopioija;
+import toiminnot.OtaTallennaLahetaKopioi;
+import toiminnot.Tallentaja;
+import toiminnot.kuvanotot.alueenotto.AlueenOtto;
 import nappaimistot.NappaimistonKasittelija;
 import yhteys.Kommunikaattori;
 
@@ -27,6 +28,7 @@ public class Main {
         Kopioija.register();
         OtaTallennaLahetaKopioi.register();
         LaikaappaGUI.register();
+        AsetuksetGUI.register();
         NappaimistonKasittelija.register();
     }
 }

@@ -5,7 +5,7 @@
  */
 package nappaimistot.pikanappain;
 
-import kayttoliittyma.toolbar.LaikaappaGUI;
+import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 import org.jnativehook.keyboard.NativeKeyEvent;
 
 /**

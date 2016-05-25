@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package muu_toiminnot.kuvanotot.alueenotto;
+package toiminnot.kuvanotot.alueenotto;
 
 import Main.OhjelmanInfo;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import muu_toiminnot.OtaTallennaLahetaKopioi;
+import toiminnot.OtaTallennaLahetaKopioi;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.mouse.NativeMouseEvent;

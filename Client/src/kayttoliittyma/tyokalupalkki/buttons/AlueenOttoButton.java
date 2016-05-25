@@ -1,7 +1,7 @@
-package kayttoliittyma.toolbar.buttons;
+package kayttoliittyma.tyokalupalkki.buttons;
 
 
-import muu_toiminnot.kuvanotot.alueenotto.AlueenOtto;
+import toiminnot.kuvanotot.alueenotto.AlueenOtto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
