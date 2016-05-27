@@ -6,6 +6,8 @@
 package kayttoliittyma.tyokalupalkki;
 
 import Main.OhjelmanInfo;
+import asetustiedosto.Asetus;
+import asetustiedosto.AsetusUtil;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
@@ -30,6 +32,15 @@ public class LaikaappaGUI {
 
     public static void register() {
         gui = new GUI();
+        tallennako = AsetusUtil.etsiAsetus("tallennako");
+        if (tallennako == null) {
+            System.out.println("tallennako == null");
+        }
+        lahetako = AsetusUtil.etsiAsetus("lahetako");
+        if (lahetako == null) {
+            System.out.println("lahetako == null");
+        }
+
     }
 
     public static void paalle(boolean paalle) {
@@ -37,6 +48,8 @@ public class LaikaappaGUI {
             gui.setVisible(paalle);
         }
     }
+
+    private static Asetus tallennako, lahetako;
 
     private static class GUI extends JFrame {
 
@@ -53,26 +66,25 @@ public class LaikaappaGUI {
         private void luoKomponentit() {
             Container container = getContentPane();
             container.setLayout(null);
-
             tallennus = new JToggleButton();
             tallennus.setText("save");
             tallennus.setBounds(10, 220, 80, 30);
-            tallennus.setSelected(OhjelmanInfo.getTallennako().bool());
+            tallennus.setSelected((boolean) tallennako.getArvo());
             tallennus.addChangeListener(new ChangeListener() {
                 @Override
                 public void stateChanged(ChangeEvent ce) {
-                    OhjelmanInfo.getTallennako().set(tallennus.isSelected());
+                    tallennako.setArvo(tallennus.isSelected());
                 }
             });
 
             lahetys = new JToggleButton();
             lahetys.setText("upload");
             lahetys.setBounds(90, 220, 80, 30);
-            lahetys.setSelected(true);
+            lahetys.setSelected((boolean) lahetako.getArvo());
             lahetys.addChangeListener(new ChangeListener() {
                 @Override
                 public void stateChanged(ChangeEvent ce) {
-                    OhjelmanInfo.getLahetako().set(lahetys.isSelected());
+                    lahetako.setArvo(lahetys.isSelected());
                 }
             });
 

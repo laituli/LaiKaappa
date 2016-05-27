@@ -1,5 +1,6 @@
 package Main;
 
+import asetustiedosto.Asetukset;
 import kayttoliittyma.asetukset.AsetuksetGUI;
 import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 import toiminnot.Kopioija;
@@ -21,6 +22,9 @@ import yhteys.Kommunikaattori;
 public class Main {
 
     public static void main(String[] args) {
+        if (true) {
+            Asetukset.register();
+        }
         OhjelmanInfo.register();
         Kommunikaattori.register();
         Tallentaja.register();

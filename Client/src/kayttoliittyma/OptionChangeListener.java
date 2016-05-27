@@ -5,7 +5,7 @@
  */
 package kayttoliittyma;
 
-import Main.Option;
+import asetustiedosto.Asetus;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -14,9 +14,9 @@ import javax.swing.event.ChangeListener;
  */
 public abstract class OptionChangeListener implements ChangeListener {
 
-    private Option o;
+    private Asetus o;
 
-    public OptionChangeListener(Option o) {
+    public OptionChangeListener(Asetus o) {
         this.o = o;
     }
     

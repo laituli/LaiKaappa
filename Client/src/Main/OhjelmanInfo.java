@@ -5,6 +5,7 @@ package Main;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import asetustiedosto.Asetukset;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class OhjelmanInfo {
     }
 
     public static void quit() {
+        Asetukset.exportTiedostoon();
+        
         try {
             if (GlobalScreen.isNativeHookRegistered()) {
                 GlobalScreen.unregisterNativeHook();
@@ -35,27 +38,26 @@ public class OhjelmanInfo {
         }
         System.exit(0);
     }
+    /*
+    private static BinaryAsetus piilottaako = new BinaryAsetus("piilottaako", Boolean.FALSE);
+    private static BinaryAsetus tallennako = new BinaryAsetus("tallennako", Boolean.TRUE);
+    private static BinaryAsetus lahetako = new BinaryAsetus("lahetako", Boolean.TRUE);
+    private static BinaryAsetus kopioiko = new BinaryAsetus("kopioiko", Boolean.TRUE);
 
-    public static Option piilottaako = Option.FALSE;
-    public static Option tallennako = Option.TRUE;
-    public static Option lahetako = Option.TRUE;
-    public static Option kopioiko = Option.TRUE;
-
-    public static Option getPiilottaako() {
+    public static BinaryAsetus getPiilottaako() {
         return piilottaako;
     }
 
-    public static Option getTallennako() {
+    public static BinaryAsetus getTallennako() {
         return tallennako;
     }
 
-    public static int getKorkeus() {
-        return korkeus;
-    }
-
-    public static Option getLahetako() {
+    public static BinaryAsetus getLahetako() {
         return lahetako;
     }
 
-    
+    public static BinaryAsetus getKopioiko() {
+        return kopioiko;
+    }*/
+
 }

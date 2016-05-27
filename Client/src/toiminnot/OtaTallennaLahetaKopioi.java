@@ -1,6 +1,8 @@
 package toiminnot;
 
 import Main.OhjelmanInfo;
+import asetustiedosto.Asetus;
+import asetustiedosto.AsetusUtil;
 import java.awt.image.BufferedImage;
 import toiminnot.kuvanotot.KuvanOttaja;
 import yhteys.Kommunikaattori;
@@ -19,16 +21,26 @@ public class OtaTallennaLahetaKopioi {
     private OtaTallennaLahetaKopioi() {
     }
 
+    private static Asetus tallennako, lahetako;
+
     public static void register() {
+        tallennako = AsetusUtil.etsiAsetus("tallennako");
+        if (tallennako == null) {
+            System.out.println("tallennako == null");
+        }
+        lahetako = AsetusUtil.etsiAsetus("lahetako");
+        if (lahetako == null) {
+            System.out.println("lahetako == null");
+        }
     }
 
     public static void custom(int x, int y, int leveys, int korkeus) {
         BufferedImage image = KuvanOttaja.otaKuva(x, y, leveys, korkeus);
         if (image != null) {
-            if (OhjelmanInfo.getTallennako().bool()) {
+            if ((boolean) tallennako.getArvo()) {
                 Tallentaja.tallennaKuva(image);
             }
-            if (OhjelmanInfo.getLahetako().bool()) {
+            if ((boolean) lahetako.getArvo()) {
                 Kommunikaattori.kommunikoiKuva(image);
             }
         }
