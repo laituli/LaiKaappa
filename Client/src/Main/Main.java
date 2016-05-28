@@ -1,6 +1,8 @@
 package Main;
 
 import asetustiedosto.Asetukset;
+import asetustiedosto.Asetus;
+import asetustiedosto.AsetusTiedosto;
 import kayttoliittyma.asetukset.AsetuksetGUI;
 import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 import toiminnot.Kopioija;
@@ -8,6 +10,9 @@ import toiminnot.OtaTallennaLahetaKopioi;
 import toiminnot.Tallentaja;
 import toiminnot.kuvanotot.alueenotto.AlueenOtto;
 import nappaimistot.NappaimistonKasittelija;
+import toiminnot.Odottaja;
+import toiminnot.Piilottaja;
+import toiminnot.kuvanotot.KuvanOttaja;
 import yhteys.Kommunikaattori;
 
 /*
@@ -22,14 +27,15 @@ import yhteys.Kommunikaattori;
 public class Main {
 
     public static void main(String[] args) {
-        if (true) {
-            Asetukset.register();
-        }
+        Asetukset.register();
         OhjelmanInfo.register();
         Kommunikaattori.register();
         Tallentaja.register();
-        AlueenOtto.register();
         Kopioija.register();
+        Piilottaja.register();
+        Odottaja.register();
+        AlueenOtto.register();
+        KuvanOttaja.register();
         OtaTallennaLahetaKopioi.register();
         LaikaappaGUI.register();
         AsetuksetGUI.register();

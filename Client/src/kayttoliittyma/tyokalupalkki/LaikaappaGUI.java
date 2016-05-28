@@ -5,7 +5,6 @@
  */
 package kayttoliittyma.tyokalupalkki;
 
-import Main.OhjelmanInfo;
 import asetustiedosto.Asetus;
 import asetustiedosto.AsetusUtil;
 import java.awt.Container;
@@ -31,7 +30,7 @@ public class LaikaappaGUI {
     private static GUI gui;
 
     public static void register() {
-        gui = new GUI();
+
         tallennako = AsetusUtil.etsiAsetus("tallennako");
         if (tallennako == null) {
             System.out.println("tallennako == null");
@@ -40,7 +39,15 @@ public class LaikaappaGUI {
         if (lahetako == null) {
             System.out.println("lahetako == null");
         }
+        gui = new GUI();
 
+    }
+
+    public static boolean isPaalla() {
+        if (gui != null) {
+            return gui.isVisible();
+        }
+        return false;
     }
 
     public static void paalle(boolean paalle) {
@@ -70,22 +77,16 @@ public class LaikaappaGUI {
             tallennus.setText("save");
             tallennus.setBounds(10, 220, 80, 30);
             tallennus.setSelected((boolean) tallennako.getArvo());
-            tallennus.addChangeListener(new ChangeListener() {
-                @Override
-                public void stateChanged(ChangeEvent ce) {
-                    tallennako.setArvo(tallennus.isSelected());
-                }
+            tallennus.addChangeListener((ChangeEvent ce) -> {
+                tallennako.setArvo(tallennus.isSelected());
             });
 
             lahetys = new JToggleButton();
             lahetys.setText("upload");
             lahetys.setBounds(90, 220, 80, 30);
             lahetys.setSelected((boolean) lahetako.getArvo());
-            lahetys.addChangeListener(new ChangeListener() {
-                @Override
-                public void stateChanged(ChangeEvent ce) {
-                    lahetako.setArvo(lahetys.isSelected());
-                }
+            lahetys.addChangeListener((ChangeEvent ce) -> {
+                lahetako.setArvo(lahetys.isSelected());
             });
 
             container.add(tallennus);

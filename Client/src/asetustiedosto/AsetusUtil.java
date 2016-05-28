@@ -28,9 +28,10 @@ public class AsetusUtil {
         return null;
     }
 
-    public static boolean setRivi(String tag, String arvo) {
+    public static boolean setOrAddRivi(String tag, String arvo) {
         TupleIndexString p = etsiRivi(tag);
         if (p == null) {
+            AsetusTiedosto.rivit.add(tag + " " + arvo);
             return false;
         }
         AsetusTiedosto.rivit.set(p.index, tag + " " + arvo);
@@ -43,9 +44,18 @@ public class AsetusUtil {
         public String string;
 
         public TupleIndexString(int i, String string) {
-            this.index = index;
+            this.index = i;
             this.string = string;
-
         }
+
+        @Override
+        public String toString() {
+            return index + " " + string;
+        }
+
+        public String getArvo() {
+            return string.split(" ", 2)[1];
+        }
+
     }
 }

@@ -13,10 +13,11 @@ public class Asetukset {
     }
 
     public final static Asetus[] defaultAsetukset = new Asetus[]{
-        new BinaryAsetus("piilottaako", Boolean.FALSE),
         new BinaryAsetus("tallennako", Boolean.TRUE),
         new BinaryAsetus("lahetako", Boolean.TRUE),
-        new BinaryAsetus("kopioiko", Boolean.TRUE)
+        new BinaryAsetus("kopioiko", Boolean.TRUE),
+        new BinaryAsetus("piilotako", Boolean.FALSE),
+        new IntAsetus("viive", 100)
     };
 
     public static void register() {
@@ -31,13 +32,14 @@ public class Asetukset {
             if (rivi == null) {
                 continue;
             }
-            asetus.setArvoByString(rivi.string);
+            asetus.setArvoByString(rivi.getArvo());
         }
     }
 
     public static void exportTiedostoon() {
         for (Asetus asetus : asetukset) {
-            AsetusUtil.setRivi(asetus.tag, asetus.arvoToString());
+            AsetusUtil.setOrAddRivi(asetus.tag, asetus.arvoToString());
         }
+        AsetusTiedosto.kirjoita();
     }
 }

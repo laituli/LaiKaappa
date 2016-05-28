@@ -18,6 +18,8 @@ public class AsetusTiedosto {
 
     public static final String nimi = "client_asetukset";
 
+    public static List<String> rivit = null;
+
     public static final void lue() {
         if (rivit == null) {
             rivit = new ArrayList<>();
@@ -29,7 +31,6 @@ public class AsetusTiedosto {
             String str = null;
             while ((str = br.readLine()) != null) {
                 rivit.add(str);
-                System.out.println(str);
             }
             br.close();
         } catch (FileNotFoundException ex) {
@@ -38,8 +39,6 @@ public class AsetusTiedosto {
             Logger.getLogger(AsetusTiedosto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public static List<String> rivit = null;
 
     public static String rivitYhteen() {
         StringBuilder sb = new StringBuilder();

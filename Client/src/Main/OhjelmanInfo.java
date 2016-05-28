@@ -38,26 +38,4 @@ public class OhjelmanInfo {
         }
         System.exit(0);
     }
-    /*
-    private static BinaryAsetus piilottaako = new BinaryAsetus("piilottaako", Boolean.FALSE);
-    private static BinaryAsetus tallennako = new BinaryAsetus("tallennako", Boolean.TRUE);
-    private static BinaryAsetus lahetako = new BinaryAsetus("lahetako", Boolean.TRUE);
-    private static BinaryAsetus kopioiko = new BinaryAsetus("kopioiko", Boolean.TRUE);
-
-    public static BinaryAsetus getPiilottaako() {
-        return piilottaako;
-    }
-
-    public static BinaryAsetus getTallennako() {
-        return tallennako;
-    }
-
-    public static BinaryAsetus getLahetako() {
-        return lahetako;
-    }
-
-    public static BinaryAsetus getKopioiko() {
-        return kopioiko;
-    }*/
-
 }

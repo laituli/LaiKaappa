@@ -1,5 +1,7 @@
 package toiminnot;
 
+import asetustiedosto.AsetusUtil;
+import asetustiedosto.BinaryAsetus;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -22,20 +24,20 @@ public class Kopioija {
 
     private static Clipboard clipboard;
     private static ClipboardOwner owner;
+    private static BinaryAsetus kopioiko;
 
     public static void register() {
-        owner = new ClipboardOwner() {
-            @Override
-            public void lostOwnership(Clipboard clpbrd, Transferable t) {
-            }
-        };
+        owner = (Clipboard clpbrd, Transferable t) -> {};
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        kopioiko = (BinaryAsetus) AsetusUtil.etsiAsetus("kopioiko");
     }
 
     public static void kopioi(String viesti) {
-        System.out.println("kopioidaan");
-        StringSelection selection = new StringSelection(viesti);
-        clipboard.setContents(selection, owner);
-        System.out.println("kopioitu");
+        if (kopioiko.getArvo()) {
+            System.out.println("kopioidaan");
+            StringSelection selection = new StringSelection(viesti);
+            clipboard.setContents(selection, owner);
+            System.out.println("kopioitu");
+        }
     }
 }

@@ -18,6 +18,8 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.mouse.NativeMouseEvent;
 import org.jnativehook.mouse.NativeMouseListener;
 import org.jnativehook.mouse.NativeMouseMotionListener;
+import toiminnot.Odottaja;
+import toiminnot.Piilottaja;
 
 /**
  *
@@ -31,7 +33,6 @@ public class AlueenOtto {
     private static Piirtaja piirtaja;
     private static Juokseja juokseja;
     private static Kuuntelija kuuntelija;
-
     private static boolean kaynnissa = false;
 
     public static void register() {
@@ -42,10 +43,13 @@ public class AlueenOtto {
 
     public static void otakuva() {
         kaynnissa = false;
+        Piilottaja.piilota();
+        Odottaja.odota();
         SwingUtilities.invokeLater(juokseja);
     }
 
     public static void close() {
+        Piilottaja.palauta();
         if (piirtaja != null) {
             piirtaja.close();
         }

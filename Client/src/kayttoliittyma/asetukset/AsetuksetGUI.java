@@ -5,12 +5,9 @@
  */
 package kayttoliittyma.asetukset;
 
-import com.sun.org.apache.xpath.internal.compiler.OpCodes;
 import java.awt.Container;
 import java.awt.Panel;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 import kayttoliittyma.asetukset.sivut.OptionsSivu;
