@@ -27,11 +27,12 @@ public class KuvanOttaja {
 
     private KuvanOttaja() {
     }
-    
+
     public static void register() {
     }
 
     public static BufferedImage otaKuva(int x, int y, int leveys, int korkeus) {
+
         Piilottaja.piilota();
         Odottaja.odota();
         BufferedImage image = null;

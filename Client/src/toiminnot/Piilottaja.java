@@ -27,13 +27,14 @@ public class Piilottaja {
 
     public static void piilota() {
         palautako = piilotako != null && piilotako.getArvo() && LaikaappaGUI.isPaalla();
+        System.out.println("palautako "+ palautako);
         if (palautako) {
             LaikaappaGUI.paalle(false);
         }
     }
 
     public static void palauta() {
-        LaikaappaGUI.paalle(palautako);
+        LaikaappaGUI.paalle(palautako || LaikaappaGUI.isPaalla() );
         palautako = false;
     }
 

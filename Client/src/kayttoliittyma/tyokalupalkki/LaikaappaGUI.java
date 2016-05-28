@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import kayttoliittyma.tyokalupalkki.buttons.AlueenOttoButton;
 import kayttoliittyma.tyokalupalkki.buttons.AsetuksetButton;
 import kayttoliittyma.tyokalupalkki.buttons.KokoNaytonOttoButton;

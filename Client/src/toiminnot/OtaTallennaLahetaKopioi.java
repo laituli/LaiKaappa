@@ -6,6 +6,7 @@ import asetustiedosto.AsetusUtil;
 import java.awt.image.BufferedImage;
 import toiminnot.kuvanotot.KuvanOttaja;
 import yhteys.Kommunikaattori;
+import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +36,7 @@ public class OtaTallennaLahetaKopioi {
     }
 
     public static void custom(int x, int y, int leveys, int korkeus) {
+        
         BufferedImage image = KuvanOttaja.otaKuva(x, y, leveys, korkeus);
         if (image != null) {
             if ((boolean) tallennako.getArvo()) {
