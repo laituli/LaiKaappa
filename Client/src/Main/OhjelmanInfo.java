@@ -28,7 +28,6 @@ public class OhjelmanInfo {
 
     public static void quit() {
         Asetukset.exportTiedostoon();
-        
         try {
             if (GlobalScreen.isNativeHookRegistered()) {
                 GlobalScreen.unregisterNativeHook();
@@ -36,6 +35,7 @@ public class OhjelmanInfo {
         } catch (NativeHookException ex) {
             Logger.getLogger(OhjelmanInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        TulosteTiedosto.close();
         System.exit(0);
     }
 }

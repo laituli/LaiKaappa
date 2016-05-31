@@ -25,6 +25,7 @@ import yhteys.Kommunikaattori;
 public class Main {
 
     public static void main(String[] args) {
+        TulosteTiedosto.register();
         Asetukset.register();
         OhjelmanInfo.register();
         Kommunikaattori.register();
