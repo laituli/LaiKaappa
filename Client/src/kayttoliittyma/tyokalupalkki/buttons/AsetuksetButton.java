@@ -9,10 +9,13 @@ package kayttoliittyma.tyokalupalkki.buttons;
  *
  * @author lai
  */
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.plaf.basic.BasicButtonUI;
 import kayttoliittyma.asetukset.AsetuksetGUI;
+import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 
 /**
  *
@@ -20,11 +23,13 @@ import kayttoliittyma.asetukset.AsetuksetGUI;
  */
 public class AsetuksetButton extends JButton implements ActionListener {
 
-    public AsetuksetButton(int x, int y, int leveys, int korkeus) {
-        super();
-        setBounds(x, y, leveys, korkeus);
-        setText("Settings");
+    public AsetuksetButton() {
+        super(LaikaappaGUI.icon("settings.png"));
+        setUI(new BasicButtonUI());
+        setBackground(new Color(0, 0, 0, 0));
+        setBorder(null);
         addActionListener(this);
+        setToolTipText("settings");
     }
 
     @Override

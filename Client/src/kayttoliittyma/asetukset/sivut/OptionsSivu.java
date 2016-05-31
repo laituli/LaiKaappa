@@ -11,7 +11,6 @@ import asetustiedosto.BinaryAsetus;
 import asetustiedosto.IntAsetus;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -20,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 
 /**
  *
@@ -42,6 +42,11 @@ public class OptionsSivu {
     private static JPanel general() {
         JPanel panel = new JPanel();
         panel.setBorder(BorderFactory.createTitledBorder("general"));
+        AsetusVaihtoCheckbox vaaka = new AsetusVaihtoCheckbox("vertical toolbar", AsetusUtil.etsiAsetus("vaaka"));
+        vaaka.addChangeListener((ChangeEvent ce) -> {
+            LaikaappaGUI.applyVaaka();
+        });
+        panel.add(vaaka);
         return panel;
     }
 

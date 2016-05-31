@@ -1,8 +1,6 @@
 package Main;
 
 import asetustiedosto.Asetukset;
-import asetustiedosto.Asetus;
-import asetustiedosto.AsetusTiedosto;
 import kayttoliittyma.asetukset.AsetuksetGUI;
 import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
 import toiminnot.Kopioija;

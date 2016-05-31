@@ -5,17 +5,27 @@
  */
 package kayttoliittyma.tyokalupalkki;
 
-import asetustiedosto.Asetus;
 import asetustiedosto.AsetusUtil;
+import kayttoliittyma.tyokalupalkki.buttons.HideButton;
+import asetustiedosto.BinaryAsetus;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JToggleButton;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import javax.swing.event.ChangeEvent;
 import kayttoliittyma.tyokalupalkki.buttons.AlueenOttoButton;
 import kayttoliittyma.tyokalupalkki.buttons.AsetuksetButton;
 import kayttoliittyma.tyokalupalkki.buttons.KokoNaytonOttoButton;
 import kayttoliittyma.tyokalupalkki.buttons.QuitButton;
+import kayttoliittyma.tyokalupalkki.buttons.SiirraButton;
 
 /**
  *
@@ -28,18 +38,13 @@ public class LaikaappaGUI {
 
     private static GUI gui;
 
+    private static BinaryAsetus vaaka;
+    public static int iconKoko = 20;
+    private static int buttonVali = 3;
+
     public static void register() {
-
-        tallennako = AsetusUtil.etsiAsetus("tallennako");
-        if (tallennako == null) {
-            System.out.println("tallennako == null");
-        }
-        lahetako = AsetusUtil.etsiAsetus("lahetako");
-        if (lahetako == null) {
-            System.out.println("lahetako == null");
-        }
+        vaaka = (BinaryAsetus) AsetusUtil.etsiAsetus("vaaka");
         gui = new GUI();
-
     }
 
     public static boolean isPaalla() {
@@ -55,53 +60,129 @@ public class LaikaappaGUI {
         }
     }
 
-    private static Asetus tallennako, lahetako;
+    public static JFrame getGUI() {
+        return gui;
+    }
+
+    public static int buttonMaara = 6;
+
+    public static void applyVaaka() {
+        if (vaaka.getArvo()) {
+            gui.setBounds(10, 200, iconKoko * buttonMaara + buttonVali * (buttonMaara + 1), iconKoko + buttonVali * 2);
+            gui.getContentPane().setLayout(new GridLayout(1, 6, buttonVali, buttonVali));
+        } else {
+            gui.setBounds(10, 200, iconKoko + buttonVali * 2, iconKoko * buttonMaara + buttonVali * (buttonMaara + 1));
+            gui.getContentPane().setLayout(new GridLayout(6, 1, buttonVali, buttonVali));
+        }
+    }
 
     private static class GUI extends JFrame {
 
-        private JToggleButton tallennus, lahetys;
+        private static Color lapinakyva = new Color(0, 0, 0, 0);
+        private static Color nakyva = new Color(0, 0, 0, .5f);
 
         private GUI() {
             super("Laikaappa");
-            setBounds(10, 200, 200, 400);
+            setUndecorated(true);
+            setBackground(lapinakyva);
             setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
             luoKomponentit();
+            addMouseListener(new LapinakyvaListener());
+            applyVaaka();
             setVisible(true);
         }
 
         private void luoKomponentit() {
             Container container = getContentPane();
-            container.setLayout(null);
-            tallennus = new JToggleButton();
-            tallennus.setText("save");
-            tallennus.setBounds(10, 220, 80, 30);
-            tallennus.setSelected((boolean) tallennako.getArvo());
-            tallennus.addChangeListener((ChangeEvent ce) -> {
-                tallennako.setArvo(tallennus.isSelected());
-            });
+            ((JPanel) container).setBorder(BorderFactory.createEmptyBorder(buttonVali, buttonVali, buttonVali, buttonVali));
+            JPanel panel = new JPanel();
+            KokoNaytonOttoButton knob = new KokoNaytonOttoButton();
+            AlueenOttoButton aob = new AlueenOttoButton();
+            AsetuksetButton ab = new AsetuksetButton();
+            SiirraButton sb = new SiirraButton();
+            HideButton hb = new HideButton();
+            QuitButton qb = new QuitButton();
 
-            lahetys = new JToggleButton();
-            lahetys.setText("upload");
-            lahetys.setBounds(90, 220, 80, 30);
-            lahetys.setSelected((boolean) lahetako.getArvo());
-            lahetys.addChangeListener((ChangeEvent ce) -> {
-                lahetako.setArvo(lahetys.isSelected());
-            });
-
-            container.add(tallennus);
-            container.add(lahetys);
-
-            KokoNaytonOttoButton knob = new KokoNaytonOttoButton(10, 10, 160, 40);
             container.add(knob);
-
-            AlueenOttoButton aob = new AlueenOttoButton(10, 60, 160, 40);
             container.add(aob);
-
-            QuitButton qb = new QuitButton(10, 310, 160, 40);
+            container.add(ab);
+            container.add(sb);
+            container.add(hb);
             container.add(qb);
 
-            AsetuksetButton ab = new AsetuksetButton(10, 260, 160, 40);
-            container.add(ab);
+            NakevaButtonListener nbl = new NakevaButtonListener();
+            for (Component component : container.getComponents()) {
+                component.addMouseListener(new NakevaButtonListener());
+            }
         }
+
+        private void applyVaaka() {
+            if (vaaka.getArvo()) {
+                setBounds(10, 200, iconKoko * buttonMaara + buttonVali * (buttonMaara + 1), iconKoko + buttonVali * 2);
+                getContentPane().setLayout(new GridLayout(1, 6, buttonVali, buttonVali));
+            } else {
+                setBounds(10, 200, iconKoko + buttonVali * 2, iconKoko * buttonMaara + buttonVali * (buttonMaara + 1));
+                getContentPane().setLayout(new GridLayout(6, 1, buttonVali, buttonVali));
+            }
+        }
+
+    }
+
+    private static class NakevaButtonListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent me) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+            gui.setBackground(GUI.nakyva);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent me) {
+        }
+    }
+
+    private static class LapinakyvaListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent me) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent me) {
+            gui.setBackground(GUI.lapinakyva);
+        }
+
+    }
+
+    public static ImageIcon icon(String path) {
+        ImageIcon icon = new ImageIcon(path);
+        Image i = icon.getImage();
+        BufferedImage tag = new BufferedImage(LaikaappaGUI.iconKoko, LaikaappaGUI.iconKoko, BufferedImage.TYPE_INT_ARGB);
+        tag.getGraphics().drawImage(i, 0, 0, LaikaappaGUI.iconKoko, LaikaappaGUI.iconKoko, null);
+        ImageIcon ret = new ImageIcon(tag);
+        return ret;
     }
 }

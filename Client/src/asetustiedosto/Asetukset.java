@@ -17,7 +17,8 @@ public class Asetukset {
         new BinaryAsetus("lahetako", Boolean.TRUE),
         new BinaryAsetus("kopioiko", Boolean.TRUE),
         new BinaryAsetus("piilotako", Boolean.FALSE),
-        new IntAsetus("viive", 100)
+        new IntAsetus("viive", 100),
+        new BinaryAsetus("vaaka", Boolean.TRUE),
     };
 
     public static void register() {

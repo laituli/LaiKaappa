@@ -98,7 +98,7 @@ public class AlueenOtto {
 
         @Override
         public void nativeMousePressed(NativeMouseEvent nme) {
-            System.out.println(nme.paramString());
+            System.out.println("pressed " + nme.paramString());
             piirtaja = new Piirtaja(nme.getPoint());
         }
 

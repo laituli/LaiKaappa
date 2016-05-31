@@ -5,7 +5,6 @@
  */
 package kayttoliittyma.tyokalupalkki.buttons;
 
-import Main.OhjelmanInfo;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,19 +16,19 @@ import kayttoliittyma.tyokalupalkki.LaikaappaGUI;
  *
  * @author lai
  */
-public class QuitButton extends JButton implements ActionListener {
+public class HideButton extends JButton implements ActionListener {
 
-    public QuitButton() {
-        super(LaikaappaGUI.icon("exit.png"));
+    public HideButton() {
+        super(LaikaappaGUI.icon("hide.png"));
         setUI(new BasicButtonUI());
         setBackground(new Color(0, 0, 0, 0));
         setBorder(null);
         addActionListener(this);
-        setToolTipText("exit from program");
+        setToolTipText("hide toolbar");
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        OhjelmanInfo.quit();
+        LaikaappaGUI.paalle(false);
     }
 }
