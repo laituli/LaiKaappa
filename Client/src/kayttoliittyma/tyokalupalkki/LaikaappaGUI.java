@@ -39,8 +39,8 @@ public class LaikaappaGUI {
     private static GUI gui;
 
     private static BinaryAsetus vaaka;
-    public static int iconKoko = 20;
-    private static int buttonVali = 3;
+    public static int iconKoko = 30;
+    private static int buttonVali = 5;
 
     public static void register() {
         vaaka = (BinaryAsetus) AsetusUtil.etsiAsetus("vaaka");
